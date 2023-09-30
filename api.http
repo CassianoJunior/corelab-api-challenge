@@ -1,0 +1,21 @@
+@base_url = "http://localhost:3333"
+@token = {{auth.response.body.access_token}}
+
+# @name get_hello
+GET {{base_url}}/hello
+
+### 
+# @name auth
+POST {{base_url}}/auth
+Content-Type: application/json
+
+{
+  "email": "johndoe@example.com",
+  "password": "123456"
+}
+
+###
+
+# @name fetch_notes
+GET {{base_url}}/notes
+Authorization: Bearer {{token}}
